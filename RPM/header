@@ -1,8 +1,8 @@
 # The name of your package
-Name: hid-retrobit
+Name: hid-retrolink
 
 # A short summary of your package
-Summary: Linux driver for retro-bit adapters
+Summary: Linux driver for retrolink dual controller port adapter
 
 # The version of your package
 Version: 1.0.0
@@ -17,7 +17,7 @@ License: GNU GPL
 Group: System Environment/Kernel
 
 # Who packaged this RPM
-Packager: retuxx <github@retux.de>
+Packager: Alberto Alonso <alberto@alonso.xyz>
 
 # The build architecture of this RPM (noarch/x86_64/i386/etc)
 Buildarch: noarch
@@ -35,10 +35,8 @@ Requires: dkms
 
 # A more verbose description of your package
 %description
-Hid-retrobit is a Linux driver for the retro-bit 
-(sometimes called Retro Link) Atari, Nintendo NES, 
-SNES & Sega Genesis joystick and gamepad controller 
-adapters.
+Hid-retrolink is a Linux driver for the retrolink dual
+controller port adapter.
 
 # You probably do not need to change this
 %define debug_package %{nil}

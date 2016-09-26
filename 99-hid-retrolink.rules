@@ -1,0 +1,45 @@
+# udev rules to rebind hid-retrolink supported devices.
+# Based on:
+# URL: https://github.com/retuxx/hid-retrolink
+#
+# Copyright (c) 2015 retuxx
+#
+# This file is part of hid-retolink.
+#
+# hid-retrolink is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# hid-retrobit is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with hid-retrolink.  If not, see <http://www.gnu.org/licenses/>.
+
+ACTION!="add", GOTO="hid_retrolink_end"
+SUBSYSTEM!="usb", GOTO="hid_retrolink_end"
+
+# only match one vendor and product
+ATTRS{idVendor}=="1292", ATTRS{idProduct}=="5366", GOTO="hid_retrolink_ok"
+GOTO="hid_retrolink_end"
+
+LABEL="hid_retrolink_ok"
+ENV{DEVTYPE}=="usb_interface", GOTO="hid_retrolink_interface"
+
+# retrolink device
+ENV{DEVTYPE}!="usb_device", GOTO="hid_retrolink_end"
+MODE="0666"
+GOTO="hid_retrolink_end"
+
+# retrolink interface
+# ensure the device is already bound to hid-generic by using sleep 1
+LABEL="hid_retrolink_interface"
+RUN+="/bin/sh -c 'sleep 1'"
+RUN+="/bin/sh -c 'ls /sys/bus/usb/devices/$kernel | grep .*:1292:.*..* > /sys/bus/hid/drivers/hid-generic/unbind'"
+RUN+="/bin/sh -c 'ls /sys/bus/usb/devices/$kernel | grep .*:1292:.*..* > /sys/bus/hid/drivers/hid-retrolink/bind'"
+
+# All done
+LABEL="hid_retrolink_end" 

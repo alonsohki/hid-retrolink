@@ -1,2 +1,2 @@
 #!/bin/sh
-dkms remove -m hid-retrobit -v 1.0.0 --all
+dkms remove -m hid-retrolink -v 1.0.0 --all

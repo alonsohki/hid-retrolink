@@ -8,26 +8,26 @@ if [ "$EUID" -ne 0 ]
 fi
 
 # maybe an earlier run of this script failed
-rm -rf hid-retrobit
+rm -rf hid-retrolink
 
 # create working directory
-mkdir -p hid-retrobit/etc/udev/rules.d
-mkdir -p hid-retrobit/etc/modules-load.d
-mkdir -p hid-retrobit/usr/src/hid-retrobit-1.0.0
+mkdir -p hid-retrolink/etc/udev/rules.d
+mkdir -p hid-retrolink/etc/modules-load.d
+mkdir -p hid-retrolink/usr/src/hid-retrolink-1.0.0
 
 # copy necessary files
-cp -R DEBIAN hid-retrobit/
-cp 99-hid-retrobit.rules hid-retrobit/etc/udev/rules.d/
-cp hid-retrobit.conf hid-retrobit/etc/modules-load.d/
-cp COPYING hid-retrobit/usr/src/hid-retrobit-1.0.0/
-cp DETAILS.md hid-retrobit/usr/src/hid-retrobit-1.0.0/
-cp dkms.conf hid-retrobit/usr/src/hid-retrobit-1.0.0/
-cp hid-retrobit.c hid-retrobit/usr/src/hid-retrobit-1.0.0/
-cp Makefile hid-retrobit/usr/src/hid-retrobit-1.0.0/
-cp README.md hid-retrobit/usr/src/hid-retrobit-1.0.0/
+cp -R DEBIAN hid-retrolink/
+cp 99-hid-retrolink.rules hid-retrolink/etc/udev/rules.d/
+cp hid-retrolink.conf hid-retrolink/etc/modules-load.d/
+cp COPYING hid-retrolink/usr/src/hid-retrolink-1.0.0/
+cp DETAILS.md hid-retrolink/usr/src/hid-retrolink-1.0.0/
+cp dkms.conf hid-retrolink/usr/src/hid-retrolink-1.0.0/
+cp hid-retrolink.c hid-retrolink/usr/src/hid-retrolink-1.0.0/
+cp Makefile hid-retrolink/usr/src/hid-retrolink-1.0.0/
+cp README.md hid-retrolink/usr/src/hid-retrolink-1.0.0/
 
 # create package
-dpkg-deb --build hid-retrobit
+dpkg-deb --build hid-retrolink
 
 # cleanup
-rm -rf hid-retrobit
+rm -rf hid-retrolink

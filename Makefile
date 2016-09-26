@@ -5,7 +5,7 @@ ccflags-y += -O2
 # see https://www.kernel.org/doc/Documentation/kbuild/modules.txt
 ifneq ($(KERNELRELEASE),)
 # kbuild part of makefile
-obj-m := hid-retrobit.o
+obj-m := hid-retrolink.o
 
 else
 # normal makefile

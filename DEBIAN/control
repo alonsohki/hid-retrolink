@@ -1,11 +1,9 @@
-Package: hid-retrobit
+Package: hid-retrolink
 Architecture: all
-Maintainer: retuxx <github@retux.de>
+Maintainer: Alberto Alonso <alberto@alonso.xyz>
 Depends: dkms
 Priority: optional
 Version: 1.0.0
 Installed-Size: 300
-Description: Linux driver for retro-bit adapters
- hid-retrobit is a Linux driver for the retro-bit 
- (sometime called Retro Link) Atari, Nintendo NES, 
- SNES & Sega Genesis joystick and gamepad controller adapters.
+Description: Linux driver for retrolink dual controller port adapter
+ hid-retrolink is a Linux driver for the retrolink dual controller port adapter.
